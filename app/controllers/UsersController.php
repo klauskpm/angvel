@@ -1,5 +1,7 @@
 <?php
 
+use App\Transformers\UserTransformer;
+
 class UsersController extends \BaseController {
 
 	protected $user;
@@ -17,7 +19,7 @@ class UsersController extends \BaseController {
 	 */
 	public function index()
 	{
-		return $this->user->all();
+		return Response::api()->WithCollection($this->user->all(), new UserTransformer);
 	}
 
 	/**
@@ -39,7 +41,14 @@ class UsersController extends \BaseController {
 	 */
 	public function store()
 	{
-		//
+		$s = $this->user->create(Input::all());
+ 
+		if($s->isSaved())
+		{
+			return Redirect::route('users.index')->with('flash', 'O usuário foi criado com sucesso');
+		}
+
+		return Redirect::route('users.create')->withInput()->withErrors($s->errors());
 	}
 
 	/**
@@ -51,7 +60,7 @@ class UsersController extends \BaseController {
 	 */
 	public function show($id)
 	{
-		//
+		return Response::api()->WithItem($this->user->find($id), new UserTransformer);
 	}
 
 	/**
