@@ -2,6 +2,13 @@
 
 class UsersController extends \BaseController {
 
+	protected $user;
+
+	public function __construct()
+	{
+		$this->user = new User();
+	}
+
 	/**
 	 * Display a listing of the resource.
 	 * GET /users
@@ -10,7 +17,7 @@ class UsersController extends \BaseController {
 	 */
 	public function index()
 	{
-		return User::all();
+		return $this->user->all();
 	}
 
 	/**
@@ -21,7 +28,7 @@ class UsersController extends \BaseController {
 	 */
 	public function create()
 	{
-		//
+		return View::make('users.create');
 	}
 
 	/**

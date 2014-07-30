@@ -16,6 +16,8 @@
 // 	return View::make('hello');
 // });
 
+Route::get('/', 'UsersController@index');
+
 Route::api(['version' => 'v1'], function()
 {
     Route::resource('users', 'UsersController');

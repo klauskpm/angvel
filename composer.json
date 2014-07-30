@@ -7,7 +7,8 @@
 		"laravel/framework": "4.2.*",
 		"dingo/api": "dev-master",
 		"way/generators": "dev-master",
-		"fzaninotto/faker": "dev-master"
+		"fzaninotto/faker": "dev-master",
+		"phpunit/phpunit": "4.0.*"
 	},
 	"autoload": {
 		"classmap": [
