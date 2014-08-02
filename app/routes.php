@@ -16,9 +16,18 @@
 // 	return View::make('hello');
 // });
 
-Route::get('/', 'IndexController@index');
+Blade::setContentTags('<%', '%>'); 		// for variables and all things Blade
+Blade::setEscapedContentTags('<%%', '%%>'); 	// for escaped data
 
-Route::api(['version' => 'v1'], function()
+Route::get('/', 'IndexController@index');
+Route::get('/template', 'IndexController@template');
+
+Route::api(['version' => 'v1', 'prefix' => 'access'], function()
 {
-    Route::resource('users', 'UsersController');
+    Route::resource('users', 'UsersController', array('only' => array('index', 'show')));
+});
+
+Route::api(['version' => 'v1', 'prefix' => 'production'], function()
+{
+    Route::resource('users', 'UsersController', array('only' => array('index', 'show', 'store', 'update', 'destroy')));
 });

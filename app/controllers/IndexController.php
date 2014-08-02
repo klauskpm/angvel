@@ -2,6 +2,8 @@
 
 class IndexController extends \BaseController {
 
+	protected $layout = 'layouts.default';
+
 	/**
 	 * Display a listing of the resource.
 	 *
@@ -9,7 +11,12 @@ class IndexController extends \BaseController {
 	 */
 	public function index()
 	{
-		//
+		$this->layout->content = View::make('index.index');
+	}
+
+	public function template()
+	{
+		return View::make('index.template');
 	}
 
 
