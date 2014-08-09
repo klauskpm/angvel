@@ -20,7 +20,8 @@ Blade::setContentTags('<%', '%>'); 		// for variables and all things Blade
 Blade::setEscapedContentTags('<%%', '%%>'); 	// for escaped data
 
 Route::get('/', 'IndexController@index');
-Route::get('/template', 'IndexController@template');
+Route::get('/profile', 'IndexController@profile');
+Route::get('/profile/preview', 'IndexController@preview');
 
 Route::api(['version' => 'v1', 'prefix' => 'access'], function()
 {

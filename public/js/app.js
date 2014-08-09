@@ -1,16 +1,4 @@
-var angvelApp = angular.module('angvelApp', []);
-
-angvelApp.controller('MyController', ['$scope', function($scope){
-	$scope.text = 'Olá';
-
-	$scope.troca = function() {
-		$scope.text = 'Trocado';
-	}
-
-	$scope.destroca = function() {
-		$scope.text = 'Olá';
-	}
-}]);
+var angvelApp = angular.module('angvelApp', ['Profile']);
 
 angvelApp.directive('troca', function(){
 	// Runs during compile

@@ -14,11 +14,15 @@ class IndexController extends \BaseController {
 		$this->layout->content = View::make('index.index');
 	}
 
-	public function template()
+	public function profile()
 	{
-		return View::make('index.template');
+		$this->layout->content = View::make('index.profile');
 	}
 
+	public function preview()
+	{
+		$this->layout->content = View::make('index.preview');
+	}
 
 	/**
 	 * Show the form for creating a new resource.
