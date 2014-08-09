@@ -37,23 +37,4 @@ class User extends \Model implements UserInterface, RemindableInterface {
 		'username.required' => 'O campo de usuário deve ser preenchido.',
 		'password.min' => 'O campo de senha deve ter no minimo, :min letras.'
 	);
-
-	// protected $errors;
-
-	// protected $errorMessages;
-
-	// public function __construct() {
-	// 	$this->errorMessages = new UserErrorMessages;
-	// }
-
-	// public function isValid($data)
-	// {
-	// 	$val = Validator::make($data, $this->rules, $this->errorMessages->messages);
-
-	// 	if($notValid = $val->fails()) {
-	// 		$this->errors = $val->messages();
-	// 	}
-
-	// 	return !$notValid;
-	// }
 }
