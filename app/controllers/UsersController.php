@@ -3,12 +3,13 @@
 use App\Transformers\UserTransformer;
 
 class UsersController extends \BaseController {
-
-	protected $user;
+	protected $transformer;
+	protected $baseModel;
 
 	public function __construct()
 	{
-		$this->user = new User();
+		$this->baseModel = new User();
+		$this->transformer = new UserTransformer();
 	}
 
 	/**
@@ -19,7 +20,7 @@ class UsersController extends \BaseController {
 	 */
 	public function index()
 	{
-		return Response::api()->WithCollection($this->user->all(), new UserTransformer);
+		return $this->transform($this->baseModel->all());
 	}
 
 	/**
@@ -41,14 +42,14 @@ class UsersController extends \BaseController {
 	 */
 	public function store()
 	{
-		$s = $this->user->create(Input::all());
- 
-		if($s->isSaved())
+		$s = $this->baseModel->create(Input::all());
+
+		if($s->save())
 		{
-			return Redirect::route('users.index')->with('flash', 'O usuário foi criado com sucesso');
+			return $this->transform($s);
 		}
 
-		return Redirect::route('users.create')->withInput()->withErrors($s->errors());
+		return 'false';
 	}
 
 	/**
@@ -60,7 +61,7 @@ class UsersController extends \BaseController {
 	 */
 	public function show($id)
 	{
-		return Response::api()->WithItem($this->user->find($id), new UserTransformer);
+		return $this->transform($this->baseModel->find($id));
 	}
 
 	/**

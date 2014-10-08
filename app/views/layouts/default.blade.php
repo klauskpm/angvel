@@ -1,9 +1,9 @@
 <html>
 <head>
-	<?php //echo Asset::styles(); ?>
+	@yield('styles')
+	@yield('css')
 	<script src="<?php echo URL::asset('js/angular.js') ?>"></script>
     @yield('scripts')
-    <script src="<?php echo URL::asset('js/app.js') ?>"></script>
 </head>
 <body>
     <div class="container">

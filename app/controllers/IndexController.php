@@ -19,6 +19,16 @@ class IndexController extends \BaseController {
 		$this->layout->content = View::make('index.profile');
 	}
 
+	public function aside()
+	{
+		$this->layout->content = View::make('index.aside');
+	}
+
+	public function asideTemplate()
+	{
+		return View::make('index.aside-template');
+	}
+
 	public function preview()
 	{
 		$this->layout->content = View::make('index.preview');

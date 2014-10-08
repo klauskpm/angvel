@@ -19,9 +19,14 @@
 Blade::setContentTags('<%', '%>'); 		// for variables and all things Blade
 Blade::setEscapedContentTags('<%%', '%%>'); 	// for escaped data
 
-Route::get('/', 'IndexController@index');
+Route::get('/', function(){
+	return file_get_contents('http://www.boadica.com.br');
+});
 Route::get('/profile', 'IndexController@profile');
 Route::get('/profile/preview', 'IndexController@preview');
+
+Route::get('/aside', 'IndexController@aside');
+Route::get('/aside-template', 'IndexController@asideTemplate');
 
 Route::api(['version' => 'v1', 'prefix' => 'access'], function()
 {

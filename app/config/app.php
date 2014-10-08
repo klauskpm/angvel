@@ -190,6 +190,7 @@ return array(
 		'Validator'         => 'Illuminate\Support\Facades\Validator',
 		'View'              => 'Illuminate\Support\Facades\View',
 		'API'               => 'Dingo\Api\Facades\API',
+		'Transformers'		=> 'App\Transformers',
 	),
 
 );
